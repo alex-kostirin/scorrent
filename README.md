@@ -2,7 +2,7 @@
 ## Project status
 This project is under development. 
 MVP milestones:
-- [ ] Bencode encoder/decoder
+- [x] Bencode encoder/decoder
 - [ ] Tracker client
 - [ ] Peer client
 - [ ] Command-line utility
