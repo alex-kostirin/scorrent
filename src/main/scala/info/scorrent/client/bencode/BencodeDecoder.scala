@@ -1,16 +1,16 @@
 package info.scorrent.client.bencode
 
-import scala.util.parsing.combinator._
+import scala.util.parsing.combinator.{ImplicitConversions, Parsers}
 import scala.util.parsing.input.CharArrayReader
 
 object BencodeDecoder extends Parsers with ImplicitConversions {
   type Elem = Char
 
-  def decode(input: Array[Byte]): Option[Any] = {
+  def decode(input: Array[Byte]): Either[DecodeError, Any] = {
     val result = doc.apply(input)
     result match {
-      case Success(v, _) => Some(v)
-      case _ => None
+      case Success(v, _) => Right(v)
+      case NoSuccess(v, _) => Left(DecodeError(v))
     }
   }
 

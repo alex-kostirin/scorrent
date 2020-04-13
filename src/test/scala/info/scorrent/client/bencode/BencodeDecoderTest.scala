@@ -6,8 +6,8 @@ import org.scalatest.matchers.must.Matchers
 class BencodeDecoderTest extends AnyFlatSpec with Matchers {
 
   "BencodeDecoder" must "decode int" in {
-    BencodeDecoder.decode("i42e".getBytes) must be(Some(42))
-    BencodeDecoder.decode("i-42e".getBytes) must be(Some(-42))
+    BencodeDecoder.decode("i42e".getBytes) must be(Right(42))
+    BencodeDecoder.decode("i-42e".getBytes) must be(Right(-42))
   }
 
   it must "decode string" in {
